@@ -60,22 +60,20 @@
 					<?php } ?>
 				</div>
 				<div class="address_header">
-					<ul class="site-lang">
-						<?php pll_the_languages(array('show_flags'=>1,'show_names'=>0)); ?>
-					</ul>
-					<?php if(get_option('day_header') || get_option('address_header')) { ?>
+					<?php if( get_option('day_header_en') || get_option('day_header_vi') || get_option('address_header_en') || get_option('address_header_vi') ) { ?>
 					<div class="textwidget">
-						<?php if(get_option('day_header')){ ?>
-							<p><?php if(get_locale() == 'en_US'){echo get_option('address_en');} else { echo get_option('address');}  ?></p>
+						<?php if(get_option('day_header_en') || get_option('day_header_vi') ){ ?>
+							<p><?php if(get_locale() == 'en_US'){echo get_option('day_header_en');} else { echo get_option('day_header_vi');}  ?></p>
 						<?php }?>
-						<?php if(get_option('phone')){ ?>
-						<p><i class="fa fa-phone" aria-hidden="true"></i><strong>Hotline : </strong>
-							<a href="tel:<?php echo get_option('phone'); ?>"> <?php echo get_option('phone'); ?></a>
-						</p>
+						<?php if(get_option('address_header_en') || get_option('address_header_vi')){ ?>
+						<p><?php if(get_locale() == 'en_US'){echo get_option('address_header_en');} else { echo get_option('address_header_vi');}  ?></p>
 						<?php }?>	
 					</div>
 				<?php }?>
 				</div>
+				<ul class="site-lang">
+						<?php pll_the_languages(array('show_flags'=>1,'show_names'=>0)); ?>
+					</ul>
 				<?php // outputs a flags list (without languages names) ?>
 
 			</div>
@@ -89,9 +87,6 @@
 					<?php wp_nav_menu($args); ?>
 
 				</nav>
-				
-				
-				
 				<div class="search_header">
 					<form  role="search" method="get" id="searchform" action="<?php echo home_url('/');  ?>">
 						<div class="search">
@@ -103,4 +98,7 @@
 				</div>
 			</div>
 		</div>
+		<?php if(is_front_page() && !is_home()){ ?>
+			<?php echo do_shortcode('[metaslider id="29"]'); ?>
+		<?php }?>
 	</header>

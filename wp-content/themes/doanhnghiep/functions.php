@@ -59,6 +59,12 @@ function featured_images_setup(){
   add_theme_support('post-formats',array('aside','gallery','link'));
   // ADD OUR WIDGETS LOCATION
   function our_widget_inits(){
+     register_sidebar(array(
+    'name' => 'Video trang chủ',
+    'id' => 'video_index',
+    'before_title' => '<h3 class="widget-title">',
+    'after_title' => '</h3>',
+  ));
     register_sidebar(array(
       'name' => 'Sidebar',
       'id' => 'sidebar1',
@@ -85,6 +91,8 @@ function featured_images_setup(){
     'before_title' => '<h3 class="widget-title">',
     'after_title' => '</h3>',
   ));
+
+     
 
   }
   add_action('widgets_init','our_widget_inits');
@@ -285,5 +293,29 @@ function remove_empty_p($content){
     return preg_replace('#<p>\s*+(<br\s*/*>)?\s*</p>#i', '', $content);
 }
 
+//SHOW POST COUNT VIEWS 
+function wpb_set_post_views($postID) {
+    $count_key = 'wpb_post_views_count';
+    $count = get_post_meta($postID, $count_key, true);
+    if($count==''){
+        $count = 1;
+        delete_post_meta($postID, $count_key);
+        add_post_meta($postID, $count_key, '1');
+    }else{
+        $count++;
+        update_post_meta($postID, $count_key, $count);
+    }
+}
 
+function wpb_get_post_views($postID){
+    $count_key = 'wpb_post_views_count';
+    $count = get_post_meta($postID, $count_key, true);
+    if($count==''){
+        delete_post_meta($postID, $count_key);
+        add_post_meta($postID, $count_key, '1');
+        return "1";
+    }
+    return $count.'';
+}
+// END SHOW POST COUNT VIEWS
 
