@@ -14,24 +14,13 @@ get_header();
 				wpb_set_post_views(get_the_ID());
 				if(have_posts()) :
 					while(have_posts()) : the_post(); ?>
-						<div class="col-md-9 col-sm-3  content_left">
+						<div class="col-sm-12  content_left">
 					
 							<article class="content_single_post">
 								<div class="single_post_info">
 									<h2><a href="<?php echo the_permalink(); ?>"><?php the_title(); ?></a></h2>
 									<p><?php the_time('d/m/y');?><span>  <?php the_time('g:i a') ?></span> 
-										| Posted in 
-										<?php	
-										$categories = get_the_category();
-										$seperator = ", ";
-										$output = '';
-										if($categories){
-											foreach ($categories as $category){
-												$output .= '<a href="' . get_category_link($category->term_id) . '"> '. $category-> cat_name . ' </a>' .  $seperator;
-											}
-											echo trim($output , $seperator);
-										}
-										?>
+										
 										| Luợt xem : <?php echo wpb_get_post_views(get_the_ID()); ?>
 									</p>
 								</div>
@@ -70,9 +59,9 @@ get_header();
 							</div>
 						<?php } ?> 
 						</div>
-						<div class="col-md-3 col-sm-3 sidebar">
+						<!-- <div class="col-md-3 col-sm-3 sidebar">
 							<?php dynamic_sidebar('sidebar1'); ?> 
-						</div>
+						</div> -->
 					<?php endwhile;
 				else:
 				endif;
