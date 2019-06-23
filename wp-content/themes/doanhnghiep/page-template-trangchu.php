@@ -29,7 +29,7 @@ get_header();
 		<a href="<?php echo get_permalink(47); ?>" class="absolute_link"></a>
 		<figure><?php if(has_custom_logo()){ the_custom_logo();} ?></figure>
 		<div class="textwidget">
-			<h4><?php echo get_the_title(47); ?></h4>
+			<h4><?php if(get_locale() == 'en_US'){echo get_the_title(52);} else{ echo get_the_title(47);} ?></h4>
 			<p><?php if(get_locale() == 'en_US'){echo 'Read more';} else { echo 'Xem thêm';}  ?></p>
 		</div>
 	</div>

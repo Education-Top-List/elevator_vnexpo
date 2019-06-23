@@ -91,6 +91,45 @@ jQuery(document).ready(function(){
 					}
 					]
 				});
+			jQuery('.partners ul ').slick({
+				dots: false,
+				infinite: true,
+				speed: 300,
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				autoplay: true,
+				autoplaySpeed: 2000,
+				prevArrow: false,
+				nextArrow: false,
+					// fade: true,
+					cssEase: 'linear',
+					responsive: [
+					{
+						breakpoint: 1024,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 1,
+							infinite: false,
+							dots: false
+						}
+					},
+					{
+						breakpoint: 600,
+						settings: {
+							slidesToShow: 1,
+							slidesToScroll: 1
+						}
+					},
+					{
+						breakpoint: 480,
+						settings: {
+							slidesToShow: 1,
+							slidesToScroll: 1
+						}
+					}
+					]
+				});
+
 		// STICKY NAVBAR
 		var sticky = document.querySelector('.sticky');
 		if (sticky.style.position !== 'sticky') {
