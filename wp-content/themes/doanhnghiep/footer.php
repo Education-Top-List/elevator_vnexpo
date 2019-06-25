@@ -1,6 +1,19 @@
 <div class="scrolltop">
 	<i class="fa fa-angle-up" aria-hidden="true"></i>	
 </div>
+<div class="regis_fixed">
+	<?php if(get_locale() == 'vi') { ?>
+	<ul>
+		<li><a href="<?php echo get_permalink(307);?>">Đăng ký tham quan</a></li>
+		<li><a href="<?php echo get_permalink(107);?>">Đăng ký gian hàng</a></li>
+	</ul>
+<?php }else{ ?>
+	<ul>
+		<li><a href="<?php echo get_permalink(313);?>">Registration Visitors</a></li>
+		<li><a href="<?php echo get_permalink(110);?>">Booth Registration</a></li>
+	</ul>
+<?php }?>
+</div>
 <footer class="footer">
 	<div class="container">
 		<div class="host_patronize">
